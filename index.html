@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>封神榜·伏魔三太子（FC）完整攻略</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #F4F3EE; color: #1A1B1C; font-family: 'PingFang SC','Microsoft YaHei','微软雅黑',Arial,sans-serif; line-height: 1.7; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 24px 24px 80px 175px; }
+  @media (max-width: 960px){ .wrap { padding: 24px 16px 80px; } }
+  header { text-align: center; padding: 28px 16px 20px; border-bottom: 3px solid #E1B98F; margin-bottom: 20px; }
+  header h1 { font-size: 26px; letter-spacing: 2px; }
+  header p { color: #6B7280; font-size: 13px; margin-top: 6px; }
+  nav { position: fixed; top: 50%; left: 16px; transform: translateY(-50%); z-index: 20; display: flex; flex-direction: column; gap: 4px; background: #FFF; border: 2px solid #E1B98F; border-radius: 16px; padding: 10px 8px; box-shadow: 0 6px 20px rgba(0,0,0,.12); }
+  nav .nav-title { font-size: 12px; color: #8A5A1E; font-weight: 700; text-align: center; padding: 2px 0 7px; border-bottom: 2px dashed #E1B98F; margin-bottom: 7px; letter-spacing: 3px; }
+  nav a { text-decoration: none; color: #5C3A12; font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 10px; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+  nav a .no { width: 20px; height: 20px; border-radius: 50%; background: #F7E9D5; color: #8A5A1E; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+  nav a:hover { background: #F7E9D5; }
+  nav a.active { background: #E1B98F; color: #5C3A12; }
+  nav a.active .no { background: #5C3A12; color: #FFF; }
+  @media (max-width: 960px){ nav { position: sticky; top: 0; transform: none; left: auto; flex-direction: row; overflow-x: auto; width: 100%; background: #F4F3EE; border: none; border-bottom: 1px solid #E4E3DD; box-shadow: none; border-radius: 0; padding: 8px 0; margin-bottom: 16px; } nav .nav-title { display: none; } }
+  h2 { font-size: 20px; margin: 32px 0 14px; padding-left: 10px; border-left: 5px solid #E1B98F; }
+  h3 { font-size: 16px; margin: 14px 0 8px; color: #5C3A12; }
+  .card { background: #FFF; border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; padding: 16px; margin-bottom: 16px; }
+  .note { background: #FDF6EC; border: 1px solid #EED9BC; border-radius: 10px; padding: 10px 14px; font-size: 13px; color: #6B4A1E; margin: 10px 0; }
+  .tip { background: #EFF6EC; border: 1px solid #CFE5C6; border-radius: 10px; padding: 10px 14px; font-size: 13px; color: #2E5D1E; margin: 10px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+  th { background: #F7E9D5; color: #5C3A12; padding: 8px 10px; text-align: left; border: 1px solid #E4E3DD; }
+  td { padding: 8px 10px; border: 1px solid #E4E3DD; vertical-align: top; }
+  tr:nth-child(even) td { background: #FBF9F4; }
+  .roles { display: flex; gap: 14px; flex-wrap: wrap; }
+  .role { flex: 1 1 220px; background: #FFF; border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; padding: 14px; text-align: center; }
+  .role svg { display: block; margin: 0 auto; }
+  .role .rname { font-size: 16px; font-weight: 600; margin-top: 8px; }
+  .role .rtag { font-size: 12px; color: #6B7280; }
+  .role ul { text-align: left; font-size: 12.5px; margin-top: 8px; padding-left: 18px; color: #3A3B3C; }
+  details { border: 1px solid #E4E3DD; border-radius: 12px; margin-bottom: 10px; background: #FFF; overflow: hidden; }
+  summary { cursor: pointer; padding: 12px 14px; font-weight: 600; font-size: 14.5px; background: #FBF7EF; color: #5C3A12; }
+  summary:hover { background: #F7E9D5; }
+  details[open] summary { border-bottom: 1px solid #E4E3DD; }
+  .ch-body { padding: 12px 16px; font-size: 13.5px; }
+  .ch-body b { color: #8A4B12; }
+  .loc { color: #1D6FA8; font-weight: 600; }
+  .boss { color: #B42325; font-weight: 600; }
+  .code { background: #2B2B2B; color: #F2C9A0; border-radius: 6px; padding: 1px 7px; font-family: Consolas, monospace; font-size: 12.5px; }
+  .toolbox { display: flex; gap: 14px; flex-wrap: wrap; }
+  .toolbox > div { flex: 1 1 300px; }
+  .toolbox input { width: 100%; padding: 8px 10px; border: 1px solid #D8D6CF; border-radius: 8px; font-size: 14px; }
+  .toolbox .out { margin-top: 8px; font-size: 13px; color: #5C3A12; background: #FBF7EF; border: 1px dashed #E1B98F; border-radius: 8px; padding: 8px 10px; }
+  .badge { display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 10px; margin-right: 4px; }
+  .b-atk { background: rgba(234,102,104,.13); color: #B42325; }
+  .b-heal { background: rgba(82,196,26,.13); color: #389E0D; }
+  .b-state { background: rgba(250,173,20,.16); color: #AD6800; }
+  .b-aux { background: rgba(139,200,234,.22); color: #1D6FA8; }
+  .b-spec { background: rgba(201,167,232,.22); color: #6B3FA0; }
+  footer { margin-top: 36px; font-size: 12px; color: #8A8B8C; border-top: 1px solid #E4E3DD; padding-top: 14px; }
+  #topBtn { position: fixed; right: 20px; bottom: 20px; background: #E1B98F; color: #5C3A12; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 18px; cursor: pointer; display: none; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+  .tw { color: #6B7280; font-weight: 400; font-size: 12.5px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>封神榜·伏魔三太子（FC）完整攻略</h1>
+  <p>角色法术 · 全流程 · BOSS 打法 · 金手指速查 · 装备药品 · 按键秘籍（适用 VirtuaNES 模拟器）</p>
+</header>
+
+<nav>
+  <div class="nav-title">目 录</div>
+  <a href="#s1" data-sec="s1"><span class="no">1</span>角色与法术</a>
+  <a href="#s2" data-sec="s2"><span class="no">2</span>全流程攻略</a>
+  <a href="#s3" data-sec="s3"><span class="no">3</span>BOSS 速查</a>
+  <a href="#s4" data-sec="s4"><span class="no">4</span>金手指速查</a>
+  <a href="#s5" data-sec="s5"><span class="no">5</span>装备与药品</a>
+  <a href="#s6" data-sec="s6"><span class="no">6</span>按键与秘籍</a>
+</nav>
+
+<h2 id="s1">一、角色与法术（简体 / 繁体）</h2>
+<div class="roles">
+  <div class="role">
+    <div id="av-nz"></div>
+    <div class="rname">哪吒</div>
+    <div class="rtag">纯物理输出 · 无法术</div>
+    <ul><li>游戏内没有法术栏</li><li>靠武器、装备与血量硬刚</li><li>主力单体高攻</li></ul>
+  </div>
+  <div class="role">
+    <div id="av-xln"></div>
+    <div class="rname">小龙女 / 小龍女</div>
+    <div class="rtag">治疗 + 摄魂系 · 10 法术</div>
+    <ul><li>全队奶妈（补血/复活/解状态）</li><li>摄魂术对阎罗有效</li><li>驱妖术可免遇怪</li></ul>
+  </div>
+  <div class="role">
+    <div id="av-yj"></div>
+    <div class="rname">杨戬 / 楊戩</div>
+    <div class="rtag">变身攻击系 · 8 法术</div>
+    <ul><li>35 级学幻雷公（群攻主力）</li><li>幻火龙后期群攻最强</li><li>跳跃术/映像术方便赶路</li></ul>
+  </div>
+  <div class="role">
+    <div id="av-jtg"></div>
+    <div class="rname">姜太公</div>
+    <div class="rtag">全能战术系 · 8 法术</div>
+    <ul><li>终极术秒杂兵、秒 BOSS</li><li>强神术群补、天罡/疾兵 buff</li><li>凌鹰术飞回城镇</li></ul>
+  </div>
+</div>
+
+<div class="card">
+<table>
+  <tr><th style="width:22%">角色</th><th style="width:22%">法术（简 / 繁）</th><th style="width:10%">类型</th><th>效果说明</th></tr>
+  <tr><td rowspan="10">小龙女<br>小龍女</td>
+      <td>提神术 / 提神術</td><td><span class="badge b-heal">治疗</span></td><td>初级补血，1 人</td></tr>
+  <tr><td>解毒术 / 解毒術</td><td><span class="badge b-state">解状态</span></td><td>解除中毒（相当于牛黄丸）</td></tr>
+  <tr><td>还元术 / 還元術</td><td><span class="badge b-state">解状态</span></td><td>解除错乱（相当于六神丸）</td></tr>
+  <tr><td>挠魂术 / 撓魂術</td><td><span class="badge b-atk">攻击</span></td><td>初级摄魂，1 个怪物</td></tr>
+  <tr><td>养神术 / 養神術</td><td><span class="badge b-heal">治疗</span></td><td>中级补血，1 人</td></tr>
+  <tr><td>驱妖术 / 驅妖術</td><td><span class="badge b-aux">辅助</span></td><td>大地图上用，一段时间不遇敌（相当于净水）</td></tr>
+  <tr><td>溶石术 / 溶石術</td><td><span class="badge b-state">解状态</span></td><td>解除石化（相当于化石粉）</td></tr>
+  <tr><td>摄魂术 / 攝魂術</td><td><span class="badge b-atk">攻击</span></td><td>高级摄魂，全部怪物</td></tr>
+  <tr><td>回神术 / 回神術</td><td><span class="badge b-heal">治疗</span></td><td>高级补血，1 人</td></tr>
+  <tr><td>复活术 / 復活術</td><td><span class="badge b-heal">治疗</span></td><td>复活并回复一半血（相当于返魂丹）</td></tr>
+  <tr><td rowspan="8">杨戬<br>楊戩</td>
+      <td>幻啄术 / 幻啄術</td><td><span class="badge b-atk">攻击</span></td><td>变为公鸡啄击，1 个怪物</td></tr>
+  <tr><td>映像术 / 映像術</td><td><span class="badge b-aux">辅助</span></td><td>大地图查看当前位置（相当于巫眼石）</td></tr>
+  <tr><td>幻毒蚣 / 幻毒蚣</td><td><span class="badge b-atk">攻击</span></td><td>变为毒蜈蚣，1 个怪物</td></tr>
+  <tr><td>跳跃术 / 跳躍術</td><td><span class="badge b-aux">辅助</span></td><td>瞬间移动（相当于蛛丝）</td></tr>
+  <tr><td>幻雷公 / 幻雷公</td><td><span class="badge b-atk">攻击</span></td><td>变为雷公，攻击全部敌人（35 级习得）</td></tr>
+  <tr><td>幻石匠 / 幻石匠</td><td><span class="badge b-spec">特殊</span></td><td>被攻击的怪物石化</td></tr>
+  <tr><td>幻地牛 / 幻地牛</td><td><span class="badge b-atk">攻击</span></td><td>变为地牛，攻击全部怪物</td></tr>
+  <tr><td>幻火龙 / 幻火龍</td><td><span class="badge b-atk">攻击</span></td><td>变为火龙，攻击全部怪物（后期群攻主力）</td></tr>
+  <tr><td rowspan="8">姜太公</td>
+      <td>昏睡术 / 昏睡術</td><td><span class="badge b-spec">特殊</span></td><td>使敌人进入昏睡</td></tr>
+  <tr><td>凌鹰术 / 凌鷹術</td><td><span class="badge b-aux">辅助</span></td><td>瞬间飞回曾到过的城镇（相当于鹰翼）</td></tr>
+  <tr><td>封魔术 / 封魔術</td><td><span class="badge b-aux">辅助</span></td><td>禁止怪物施魔法</td></tr>
+  <tr><td>天罡术 / 天罡術</td><td><span class="badge b-aux">辅助</span></td><td>己方防御翻倍，持续 1 回合</td></tr>
+  <tr><td>疾兵术 / 疾兵術</td><td><span class="badge b-aux">辅助</span></td><td>敏捷低于己者攻击翻倍，持续 1 回合</td></tr>
+  <tr><td>炫光术 / 炫光術</td><td><span class="badge b-atk">攻击</span></td><td>攻击全部怪物</td></tr>
+  <tr><td>强神术 / 強神術</td><td><span class="badge b-heal">治疗</span></td><td>全体角色高级补血</td></tr>
+  <tr><td>终极术 / 終極術</td><td><span class="badge b-spec">特殊</span></td><td>杂兵一招必杀；对 BOSS 首次施放必 MISS，之后攻击一次可秒杀任意 BOSS</td></tr>
+  <tr><td>哪吒</td><td>（无法术）</td><td><span class="badge b-atk">物理</span></td><td>战斗只能普攻与用道具，练级堆血、换好武器即可</td></tr>
+</table>
+<div class="note">头像为自绘像素示意，非官方素材。繁体版个别法术名可能与此表略有差异，以游戏内显示为准。</div>
+</div>
+
+<h2 id="s2">二、全流程攻略（地图方位 &amp; 怎么打）</h2>
+
+<details open>
+<summary>第一章 · 四海龙王（陈塘关 → 东海）</summary>
+<div class="ch-body">
+  <p><span class="loc">路线</span>：陈塘关（出发）→ 陈塘村（商店、仓库）→ 海底步道 → <b>南海龙王宫</b> → <b>西海龙王宫</b> → 捕鱼村 → <b>北海龙王宫</b>（得<b>定海珠</b>）→ 海底旋涡（用定海珠通过）→ 新月岛（遇小龙女）→ <b>东海龙王宫</b>（打败东海龙王，<b>小龙女加入</b>）</p>
+  <p><span class="boss">BOSS 打法</span>：四个龙王都擅长法术攻击，多备药草。</p>
+  <ul>
+    <li>南海龙王：4~5 级即可稳过；</li>
+    <li>西海龙王：6 级以上，先在陈塘村买把长剑再打；</li>
+    <li>北海龙王：用法术/多买药，等级高一点再去；</li>
+    <li>东海龙王：备好 10 个药草、12 级以上再打。</li>
+  </ul>
+  <div class="tip">陈塘村仓库里有"手刀"，别忘了搜；鞋子类装备加回避率（如短皮靴 +5）。</div>
+</div>
+</details>
+
+<details>
+<summary>第二章 · 哪吒自尽 · 地狱十殿（奈何村 → 十殿阎罗）</summary>
+<div class="ch-body">
+  <p><span class="loc">路线</span>：哪吒自尽后进入地狱 → 奈何村 → 第一殿～第十殿（每殿一个阎王）→ 哪吒重生于<b>平安村</b></p>
+  <p><span class="boss">BOSS 打法（十殿阎罗）</span>：</p>
+  <ul>
+    <li>核心战术：<b>小龙女的挠魂/摄魂术</b>对阎王效果很好，别一直只回血；</li>
+    <li>第三殿前建议把哪吒练到 18 级左右，后面几殿没有回血点；</li>
+    <li>第七殿内有"调装状轴"（全员 HP/MP 全恢复、清状态）；</li>
+    <li>第九殿平等王：攻 120 / 防 78，会用双体攻击，单体命中低，用挠魂术可取胜。</li>
+  </ul>
+  <p><span class="loc">购物提醒</span>：石源地（石泉谷）药铺可买 提神术/解毒术/挠魂术/还元术，兵器店买铁指环（给小龙女），防具买铁布衫、毛皮靴；百货店备满药。</p>
+</div>
+</details>
+
+<details>
+<summary>第三章 · 杨戬加入 · 九龙岛四恶人</summary>
+<div class="ch-body">
+  <p><span class="loc">路线</span>：平安村 → 玉泉山（打探杨戬）→ 逸仙亭（休息站）→ 森林神木（遇杨戬）→ 回玉泉山找他师父拿<b>玉佩</b> → 再回森林神木（<b>杨戬加入</b>）→ 九龙镇（四大恶人情报）→ 五龙山（找<b>文殊天尊</b>得<b>遁龙桩</b>）→ <b>九龙岛</b>（打四大恶人）</p>
+  <p><span class="boss">BOSS 打法（四大恶人）</span>：血厚攻高，杨森会用错乱法术降我方防御、每回合约 57 点伤害。<b>必须先对敌人使用遁龙桩</b>（秘宝），否则攻击全部无效。之后集火逐一击破。</p>
+</div>
+</details>
+
+<details>
+<summary>第四章 · 小龙女失踪 · 女人国</summary>
+<div class="ch-body">
+  <p><span class="loc">路线</span>：九龙镇断桥修复 → 佳东镇（魔家四将情报）→ 后山窟（打<b>花狐貂</b>，此后<b>小龙女失踪</b>）→ 女儿村 → 清峰山（找清虚真君得<b>夜明珠</b>，并得知打魔家四将需<b>钻心钉</b>）→ 暗黑洞窟（<b>用夜明珠照明</b>，最深宝箱得<b>捆仙绳</b>）→ 女人国（机关重重，找到女王）</p>
+  <p><span class="boss">BOSS 打法（女人国女王）</span>：<b>必须先使用捆仙绳</b>，否则攻击无效。破其妖法后再输出。</p>
+</div>
+</details>
+
+<details>
+<summary>第五章 · 佳梦关魔家四将 · 救小龙女</summary>
+<div class="ch-body">
+  <p><span class="loc">路线</span>：佳梦关（战魔家四将）→ 中途找回小龙女 → 打败后<b>杨戬生重病</b></p>
+  <p><span class="boss">BOSS 打法（魔家四将）</span>：</p>
+  <ul>
+    <li><b>打魔礼寿之前必须先用钻心钉</b>，否则全员免疫；</li>
+    <li>集火顺序：<b>魔礼青</b>（HP 最少且会多体攻击）→ 魔礼红 → <b>魔礼海最后打</b>（HP 多、威胁相对小）；</li>
+    <li>把杨戬练到 <b>35 级学会幻雷公</b>后，每回合能打出 2000+ 总伤害，此战压力大减；</li>
+    <li>战后得 2500 金、1600 经验。</li>
+  </ul>
+</div>
+</details>
+
+<details>
+<summary>第六章 · 救杨戬 · 姜太公加入</summary>
+<div class="ch-body">
+  <p><span class="loc">路线</span>：西岐城（西村水池中得<b>神木桨</b>，与姬昌交谈）→ 芙冰村（把神木桨给船夫造船）→ 海中香谢居（找<b>百草仙子</b>得<b>雪莲</b>）→ 回玉泉山用雪莲救杨戬 → 火云洞（三圣大师处取丹药）→ 回西岐城（丹药投入井中清疫病，获得姜子牙情报）→ 磻溪（遇见姜子牙，需找姬昌劝说后<b>姜子牙加入</b>）</p>
+  <div class="tip">芙冰村水中与石番溪有好装备（如三尖剑、异文剑），别错过。</div>
+</div>
+</details>
+
+<details>
+<summary>第七章 · 梅山七怪 · 筋斗云</summary>
+<div class="ch-body">
+  <p><span class="loc">路线</span>：棋盘山（古庙香炉中得<b>铁槌</b>，槌破两旁画像）→ <b>桃精与柳鬼</b>（<b>必须先使用打神鞭</b>，否则攻击无效）→ 梅山镇（照妖镜情报）→ 终南山（云中子处得<b>照妖镜</b>，得知梅山七怪）→ 梅山镇（对村民用照妖镜现原形）→ 梅山（打剩下二怪，山顶猴精逃走）→ 水濂洞（大战<b>美猴王</b>，得<b>筋斗云</b>）</p>
+  <p><span class="loc">提示</span>：得到筋斗云后，姜子牙可飞回磻溪坐船上行；大地图上注意云朵即可。</p>
+</div>
+</details>
+
+<details>
+<summary>第八章 · 万沙镇闻太师 · 救姜子牙</summary>
+<div class="ch-body">
+  <p><span class="loc">路线</span>：万沙镇（遇闻太师，姜子牙被作法困于<b>落魂台</b>）→ 昆仑山（找元始天尊，得知老子情报）→ 玄都云（空中奇云处找老子得<b>太极图</b>）→ 回落魂台（用太极图破法，取得<b>草人</b>）→ 万沙镇（对姜子牙使用草人，<b>姜子牙复活</b>）→ 青龙关（风吼阵挡路）→ 崆峒山（灵宝真人处得定风珠情报+信件）→ 九鼎山（渡厄真人处用信件换<b>定风珠</b>）→ 回青龙关（<b>风吼阵前三格处使用定风珠</b>破阵）→ 打<b>闻太师</b></p>
+  <p><span class="loc">后续路线</span>：雪原村（独角兽情报）→ 海底洞（神殿中找到<b>独角兽</b>，给小龙女作脚装备）→ 白石村（医院秘道找大船）→ 漩涡海洞（女人国东南海面，得<b>血葫芦</b>）→ 饯行洞窟（雪原村东北山谷，仙人祝福+情报）→ 朝歌城</p>
+</div>
+</details>
+
+<details>
+<summary>第九章 · 最终决战（朝歌城 → 摘星楼 → 纣王）</summary>
+<div class="ch-body">
+  <p><span class="loc">路线</span>：朝歌城（先遇三精：<b>妲己、雉鸡精、石琵琶精</b>，战斗前<b>必须先使用捆仙绳</b>，妲己会逃跑）→ 轩辕坟（打妲己时<b>先使用血葫芦</b>）→ 摘星楼（打纣王，但打一回合他就逃跑）→ 浮游仙山（离开朝歌城，用筋斗云飞往西方天空云朵处，找<b>玉鼎真人</b>得<b>九龙罩</b>）→ 回朝歌城（对纣王使用九龙罩使其无法逃脱，<b>再战纣王</b>）</p>
+  <p><span class="boss">BOSS 打法（纣王）</span>：HP 高达 65500，单体攻击伤害极高（可达 5000~6000），群攻全屏 3000+。<b>建议平均 70 级以上再打</b>（或用秘籍快速升到 80 级）。流程：先用九龙罩锁住 → 姜太公终极术（首放必 MISS）→ 普通攻击一次秒杀；终极术 + 打神鞭等秘宝套路可大幅缩短战斗。</p>
+  <div class="tip">快速通关技巧：大地图东北进最终迷宫先打纣王一次 → 出迷宫会发现浮空山，筋斗云上去找仙人拿九龙罩 → 回来对纣王使用后进战斗 → 通关。</div>
+</div>
+</details>
+
+<h2 id="s3">三、BOSS 速查表</h2>
+<div class="card">
+<table>
+  <tr><th>BOSS / 敌人</th><th>位置</th><th>关键打法</th></tr>
+  <tr><td>南海 / 西海 / 北海 / 东海龙王</td><td>四海龙宫</td><td>等级到位+备药：4-5 / 6+ / 8+ / 12+ 级；龙王善法术</td></tr>
+  <tr><td>十殿阎罗（秦广王～转轮王）</td><td>地狱十殿</td><td>小龙女挠魂/摄魂术；第七殿用调装状轴全恢复；第九殿平等王攻高防厚</td></tr>
+  <tr><td>四大恶人</td><td>九龙岛</td><td>先使用<b>遁龙桩</b>，否则攻击无效；杨森会错乱法术</td></tr>
+  <tr><td>女人国女王</td><td>女人国</td><td>先使用<b>捆仙绳</b>，否则攻击无效</td></tr>
+  <tr><td>花狐貂</td><td>佳东镇后山窟</td><td>打完小龙女失踪</td></tr>
+  <tr><td>魔家四将</td><td>佳梦关</td><td>打魔礼寿前<b>先用钻心钉</b>；先集火魔礼青，魔礼海最后；杨戬 35 级幻雷公</td></tr>
+  <tr><td>桃精与柳鬼</td><td>棋盘山古庙</td><td>先用<b>铁槌破画</b>，战斗先使用<b>打神鞭</b>，否则攻击无效</td></tr>
+  <tr><td>梅山七怪</td><td>梅山镇 / 梅山</td><td>用<b>照妖镜</b>现原形后再打</td></tr>
+  <tr><td>美猴王</td><td>水濂洞</td><td>打败得<b>筋斗云</b></td></tr>
+  <tr><td>闻太师</td><td>青龙关</td><td>风吼阵前三格用<b>定风珠</b>破阵后再打</td></tr>
+  <tr><td>妲己 / 雉鸡精 / 石琵琶精</td><td>朝歌城 / 轩辕坟</td><td>朝歌先<b>捆仙绳</b>；轩辕坟打妲己先<b>血葫芦</b></td></tr>
+  <tr><td>纣王</td><td>摘星楼</td><td>先<b>九龙罩</b>锁住（否则一回合就跑）；70+ 级；姜太公终极术+普攻秒杀</td></tr>
+</table>
+</div>
+
+<h2 id="s4">四、金手指速查（VirtuaNES 格式：地址-字节数-数值）</h2>
+<div class="card">
+<div class="note">打开方式：游戏中按 <b>Ctrl + End</b> → 新建粘贴代码 → 勾选启用。改完按 <b>S 即时存档</b>保留。数值均为 16 进制。</div>
+<table>
+  <tr><th>效果</th><th>代码</th><th>说明</th></tr>
+  <tr><td>金币无限（≈9990）</td><td class="code">0501-02-2705</td><td>或 3 字节版 <span class="code">0501-03-0F423F</span>（≈100万）</td></tr>
+  <tr><td>哪吒等级</td><td class="code">0504-01-XX</td><td>XX 为等级十六进制：3级=03、20级=14、30级=1E、99级=62/63</td></tr>
+  <tr><td>哪吒经验</td><td class="code">0508-03-XXXXXX</td><td>3 字节经验值，如 100万=<span class="code">0F4240</span></td></tr>
+  <tr><td>哪吒当前血量</td><td class="code">0514-02-XXXX</td><td>1000=<span class="code">03E8</span>；锁血=<span class="code">270F</span>(9999)</td></tr>
+  <tr><td>哪吒体力上限</td><td class="code">051C-02-XXXX</td><td>1000=<span class="code">03E8</span>；9999=<span class="code">270F</span></td></tr>
+  <tr><td>小龙女等级/经验</td><td class="code">0505-01-XX / 050B-03-XXXXXX</td><td>血量 <span class="code">0516-02</span>，上限 <span class="code">051E-02</span></td></tr>
+  <tr><td>杨戬等级/经验</td><td class="code">0506-01-XX / 050E-03-XXXXXX</td><td>血量 <span class="code">0518-02</span>，上限 <span class="code">0520-02</span></td></tr>
+  <tr><td>姜太公等级/经验</td><td class="code">0507-01-XX / 0511-03-XXXXXX</td><td>血量 <span class="code">051A-02</span>，上限 <span class="code">0522-02</span></td></tr>
+  <tr><td>最高敏捷 / 体能 / 精神</td><td class="code">0534-01-FF / 0538-02-03E7 / 0540-02-270F</td><td>哪吒属性（杨戬等人物地址依次偏移）</td></tr>
+  <tr><td>穿墙</td><td class="code">0058-01-62</td><td>公开代码，部分版本有效</td></tr>
+</table>
+<div class="toolbox">
+  <div>
+    <h3>十进制 → 十六进制换算器</h3>
+    <input id="decIn" type="number" placeholder="输入十进制数值，如 1000、4500、60000">
+    <div class="out" id="hexOut">十六进制结果会显示在这里</div>
+  </div>
+  <div>
+    <h3>十六进制 → 十进制</h3>
+    <input id="hexIn" placeholder="输入十六进制，如 03E8、270F、0F4240">
+    <div class="out" id="decOut">十进制结果会显示在这里</div>
+  </div>
+</div>
+</div>
+
+<h2 id="s5">五、装备与药品速查</h2>
+<div class="card">
+<h3>哪吒武器（节选）</h3>
+<table>
+  <tr><th>武器</th><th>加成</th><th>价格</th><th>最早产地</th></tr>
+  <tr><td>小刀</td><td>+2</td><td>15</td><td>陈塘关</td></tr>
+  <tr><td>长剑</td><td>+10</td><td>120</td><td>陈塘村</td></tr>
+  <tr><td>透甲枪</td><td>+25</td><td>300</td><td>奈河村</td></tr>
+  <tr><td>拐突枪</td><td>+38</td><td>420</td><td>石源地</td></tr>
+  <tr><td>七星剑</td><td>+54</td><td>560</td><td>平安村</td></tr>
+  <tr><td>双钩枪</td><td>+100</td><td>1000</td><td>佳东镇</td></tr>
+  <tr><td>赤铜圈</td><td>+160</td><td>1400</td><td>女儿村</td></tr>
+  <tr><td>三尖剑</td><td>+164</td><td>2000</td><td>芙冰村</td></tr>
+  <tr><td>异文剑</td><td>+204</td><td>2800</td><td>芙冰村(水)/石番溪</td></tr>
+  <tr><td>行空圈</td><td>+320</td><td>4000</td><td>梅山镇</td></tr>
+  <tr><td>双形枪</td><td>+300</td><td>6000</td><td>万沙镇</td></tr>
+  <tr><td>缤纷剑</td><td>+365</td><td>9000</td><td>和乐村</td></tr>
+  <tr><td>鸳鸯剑</td><td>+800</td><td>13200</td><td>雪原村</td></tr>
+  <tr><td>乾坤圈</td><td>+600</td><td>16000</td><td>白石村</td></tr>
+  <tr><td>火焰枪</td><td>+520</td><td>32000</td><td>轩辕堆</td></tr>
+</table>
+<h3>药品大全（消耗品 · 详细）</h3>
+<table>
+  <tr><th style="width:14%">名称</th><th style="width:10%">价格</th><th style="width:36%">效果</th><th>购买 / 获取</th></tr>
+  <tr><td>药草</td><td>50 两</td><td>回复 30 点体力（HP）</td><td>陈塘村起各大药铺</td></tr>
+  <tr><td>参须</td><td>200 两</td><td>回复 60 点体力</td><td>奈河村、石泉谷起药铺</td></tr>
+  <tr><td>人参</td><td>500 两</td><td>回复 100 点体力</td><td>平安村起药铺</td></tr>
+  <tr><td>灵芝</td><td>2000 两</td><td>回复 500 点体力（后期大补品）</td><td>后期城镇药铺</td></tr>
+  <tr><td>香草</td><td>30 两</td><td>回复 100 点法力（MP）</td><td>奈河村起药铺</td></tr>
+  <tr><td>牛黄丸</td><td>商店有售</td><td>解除中毒状态</td><td>陈塘村、捕鱼村起</td></tr>
+  <tr><td>六神丸</td><td>商店有售</td><td>解除错乱（混乱）状态</td><td>奈河村起</td></tr>
+  <tr><td>化石粉</td><td>商店有售</td><td>解除石化状态</td><td>平安村百货店</td></tr>
+  <tr><td>返魂丹（还魂丹）</td><td>商店有售</td><td>复活阵亡角色并回复部分体力（比复活术稍弱）</td><td>石泉谷药铺起</td></tr>
+  <tr><td>净水</td><td>商店有售</td><td>大地图使用，一段时间内不遇敌（=小龙女驱妖术）</td><td>商店 / 宝箱</td></tr>
+  <tr><td>蛛丝</td><td>商店有售</td><td>大地图使用，跳跃/瞬间移动（=杨戬跳跃术）</td><td>捕鱼村、奈河村、石泉谷</td></tr>
+  <tr><td>巫眼石</td><td>150 两</td><td>大地图使用，查看当前位置，相当于地图定位（=杨戬映像术）</td><td>平安村百货店 / 神木林等地宝箱</td></tr>
+  <tr><td>鹰翼</td><td>商店有售</td><td>大地图使用，瞬间飞回曾到过的任意城镇（=姜太公凌鹰术）</td><td>平安村百货店</td></tr>
+  <tr><td>定神珠</td><td>——</td><td>地狱第九殿区域走动会持续掉血，使用后恢复；可反复用于该区域</td><td>地狱第九殿宝箱调查获得</td></tr>
+  <tr><td>玉佩</td><td>可卖 1000 两</td><td>邀请杨戬入队的信物（交给杨戬后失去，入队后无用途）</td><td>玉泉山（玉鼎真人）</td></tr>
+</table>
+<div class="note">用法说明：药草/参须/人参/灵芝/香草可在菜单或战斗中直接使用；牛黄丸、六神丸、化石粉用于解除对应异常状态；净水、蛛丝、巫眼石、鹰翼只能在大地图使用（战斗、迷宫内无效）。</div>
+<h3>秘宝（剧情关键道具 · 详细）</h3>
+<table>
+  <tr><th style="width:12%">秘宝</th><th style="width:44%">用途（详细）</th><th>获取方式</th></tr>
+  <tr><td>定海珠</td><td>通过海底旋涡的唯一道具</td><td>北海龙王宫（打败北海龙王）</td></tr>
+  <tr><td>遁龙桩</td><td>对四大恶人使用，否则对方免疫一切攻击；破防后再集火</td><td>五龙山（文殊天尊）</td></tr>
+  <tr><td>夜明珠</td><td>暗黑洞窟内照明（不用则一片漆黑）</td><td>清峰山（清虚真君）</td></tr>
+  <tr><td>捆仙绳</td><td>破女人国女王、朝歌三精（妲己等）的妖法，战斗前使用，否则攻击无效</td><td>暗黑洞窟最深宝箱</td></tr>
+  <tr><td>钻心钉</td><td>打魔家四将必备，战斗前使用，否则全员攻击被免疫</td><td>佳梦关剧情（黄天化给予）</td></tr>
+  <tr><td>神木桨</td><td>交给芙冰村船夫，造船去海中香谢居</td><td>西岐城西村水池</td></tr>
+  <tr><td>雪莲</td><td>治好杨戬的重病</td><td>海中香谢居（百草仙子）</td></tr>
+  <tr><td>铁槌</td><td>槌破棋盘山古庙两旁的画像，放出桃精柳鬼</td><td>棋盘山古庙香炉</td></tr>
+  <tr><td>打神鞭</td><td>打桃精柳鬼必备，战斗前使用，否则攻击无效</td><td>棋盘山破画后剧情获得</td></tr>
+  <tr><td>照妖镜</td><td>对梅山镇可疑村民使用，使梅山妖怪现出原形才能打</td><td>终南山（云中子）</td></tr>
+  <tr><td>筋斗云</td><td>飞行坐骑，可上空中云朵（去玄都云、浮游仙山等）；姜子牙可飞回磻溪坐船</td><td>水濂洞（打败美猴王）</td></tr>
+  <tr><td>太极图</td><td>破落魂台法阵，取得草人</td><td>玄都云（老子）</td></tr>
+  <tr><td>草人</td><td>在万沙镇对姜子牙使用，使其复活</td><td>落魂台（用太极图破法后取得）</td></tr>
+  <tr><td>定风珠</td><td>破青龙关风吼阵（在阵前三格处使用），之后才能打闻太师</td><td>九鼎山（渡厄真人，需崆峒山信件）</td></tr>
+  <tr><td>独角兽</td><td>小龙女脚装备，回避率 +20%（最高档）</td><td>海底洞神殿</td></tr>
+  <tr><td>血葫芦</td><td>打妲己（轩辕坟）必备，战斗前使用，否则其妖法难破</td><td>漩涡海洞（女人国东南海面）</td></tr>
+  <tr><td>九龙罩</td><td>最终战锁住纣王，否则他打一回合就逃跑；锁定后再战</td><td>浮游仙山（玉鼎真人，需筋斗云）</td></tr>
+</table>
+<div class="tip">脚装备（回避率）：麻鞋+3%、短皮靴+5%、毛皮靴+8%、犀皮靴+11%、纹豹靴+14%、移星靴+17%；最强：风火轮/哮天犬/四不像/独角兽（+20%，剧情获得）。</div>
+</div>
+
+<h2 id="s6">六、模拟器按键与秘籍</h2>
+<div class="card">
+<table>
+  <tr><th>按键</th><th>功能</th></tr>
+  <tr><td>方向键</td><td>移动 / 菜单选择</td></tr>
+  <tr><td>X / Z</td><td>A 键（确认/攻击）/ B 键（取消/法术菜单）</td></tr>
+  <tr><td>Enter / 右 Shift</td><td>Start / Select</td></tr>
+  <tr><td>S / L</td><td>即时存档 / 即时读档</td></tr>
+  <tr><td>F3 / F4</td><td>切换存档槽位（共 10 个：st0~st9）</td></tr>
+  <tr><td>Tab</td><td>2 倍速开关（当前配置 120FPS=2倍）</td></tr>
+  <tr><td>Alt+Enter</td><td>全屏切换</td></tr>
+  <tr><td>F5 / F6 / F7 / F8</td><td>窗口 1x / 2x / 3x / 4x</td></tr>
+  <tr><td>F2</td><td>软复位（重启游戏）</td></tr>
+  <tr><td>Ctrl+P</td><td>截图</td></tr>
+  <tr><td>Ctrl+End</td><td>打开金手指代码窗口</td></tr>
+</table>
+<div class="note">游戏自带秘籍：<b>上 + 选择 + 开始 + B</b> 四个键同时按，听到提示音后进入无敌穿墙状态（对 BOSS 战同样适用）。</div>
+<div class="tip"><b>存档安全提醒</b>：S 会把当前槽位原地覆盖，旧档无法找回。重要进度前先按 F3 换槽再 S；建议定期把 <span class="code">emulator\state\</span> 和 <span class="code">emulator\save\</span> 两个文件夹复制备份。</div>
+</div>
+
+<footer>
+  资料整理：流程主线与法术/装备数据来自抖音百科《封神榜之伏魔三太子》词条、超能街机游戏页、逗游论坛；BOSS 打法参考 FC 封神榜流程攻略与玩家攻略视频。人物头像为自绘像素示意。繁体版个别名称可能略有差异，以游戏内为准。本页可离线打开，无需联网。
+</footer>
+</div>
+
+<button id="topBtn" title="回到顶部">↑</button>
+
+<script>
+(function(){
+  // ---- 像素头像渲染 ----
+  var sprites = {
+    nz: { rows:[
+      "....RRRRRRR...",
+      "...RRRRRRRRR..",
+      "...GGGGGGGGG..",
+      "...SSSSSSSSS..",
+      "..SSSSSSSSSSS.",
+      "..SESSSSSSSES.",
+      "..SESSSSSSSES.",
+      "..SSSSSSSSSSS.",
+      "..RRRRRRRRRRR.",
+      ".RRRRRRRRRRRR.",
+      ".RRRRRRRRRRRR.",
+      ".GGGGRRRRRGGG.",
+      ".GGGGRRRRRGGG.",
+      "....GGGGGG....",
+      "....GGGGGG....",
+      "......GG......"],
+      colors: {'R':'#D9483B','G':'#E7B84B','S':'#F2C9A0','E':'#333333'} },
+    xln: { rows:[
+      "....W....W....",
+      "...WWW..WWW...",
+      "..BBBBBBBBBBB.",
+      "..BBBBBBBBBBB.",
+      "..SSSSSSSSSSS.",
+      ".SSSSSSSSSSSS.",
+      ".SSESSSSSSESS.",
+      ".SSSSSSSSSSSS.",
+      "..WWWWWWWWWWW.",
+      "..WWWWWWWWWWW.",
+      "..WBBBBBBBBBW.",
+      "..WBBBBBBBBBW.",
+      "..BBBBBBBBBBB.",
+      "...BBBBBBBBB..",
+      "....BBBBB.BB..",
+      "......B...B..."],
+      colors: {'B':'#4A7BD6','W':'#F4F1E6','S':'#F2C9A0','E':'#333333'} },
+    yj: { rows:[
+      "..GGGGGGGGGGG.",
+      ".GGGGGGGGGGGG.",
+      ".GGGGGGGGGGGG.",
+      ".GSSSSSSSSSSG.",
+      "..SSSSSSSSSSS.",
+      "..SSSDSSSSSSS.",
+      "..SESSSSSSES..",
+      "..SESSSSSSES..",
+      ".SSSSSSSSSSSS.",
+      ".BBBBBBBBBBBB.",
+      ".BBBBBBBBBBBB.",
+      ".WBBBBBBBBBBW.",
+      ".WBBBBBBBBBBW.",
+      "..BBBBBBBBBBB.",
+      "..BBBBB.BBBBB.",
+      "..BBBBB.BBBBB."],
+      colors: {'G':'#E7B84B','B':'#4A7BD6','S':'#F2C9A0','W':'#F4F1E6','D':'#C0392B','E':'#333333'} },
+    jtg: { rows:[
+      "..WWWWWWWWWWW.",
+      "..WWWWWWWWWWW.",
+      "..SSSSSSSSSSS.",
+      "..SSSSSSSSSSS.",
+      "..SESSSSSSES..",
+      "..SESSSSSSES..",
+      "..SSSSSSSSSSS.",
+      ".WWWWWWWWWWWW.",
+      ".WWWWWWWWWWWW.",
+      "..GGGGGGGGGGG.",
+      "..GGGGGGGGGGG.",
+      "..GWWWWWWWWWG.",
+      "..GGGGGGGGGGG.",
+      "..GGGGGGGGGGG.",
+      "...GGG..GGG...",
+      "...GGG..GGG..."],
+      colors: {'W':'#F1EEE3','G':'#9B9B92','S':'#F2C9A0','E':'#333333'} }
+  };
+  function renderAvatar(id, s){
+    var el = document.getElementById(id);
+    if (!el) return;
+    var cell = 6, w = 14*cell, h = 16*cell;
+    var svg = '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'" shape-rendering="crispEdges">';
+    for (var r=0; r<s.rows.length; r++){
+      var row = s.rows[r];
+      for (var c=0; c<row.length; c++){
+        var ch = row[c];
+        if (ch === '.') continue;
+        var col = s.colors[ch];
+        if (!col) continue;
+        svg += '<rect x="'+(c*cell)+'" y="'+(r*cell)+'" width="'+cell+'" height="'+cell+'" fill="'+col+'"/>';
+      }
+    }
+    svg += '</svg>';
+    el.innerHTML = svg;
+  }
+  renderAvatar('av-nz', sprites.nz);
+  renderAvatar('av-xln', sprites.xln);
+  renderAvatar('av-yj', sprites.yj);
+  renderAvatar('av-jtg', sprites.jtg);
+
+  // ---- 进制换算 ----
+  function padHex(v, min){
+    var s = v.toString(16).toUpperCase();
+    while (s.length < min) s = '0' + s;
+    return s;
+  }
+  var decIn = document.getElementById('decIn');
+  var hexOut = document.getElementById('hexOut');
+  var hexIn = document.getElementById('hexIn');
+  var decOut = document.getElementById('decOut');
+  if (decIn && hexOut){
+    decIn.addEventListener('input', function(){
+      var v = parseInt(decIn.value, 10);
+      if (isNaN(v) || v < 0){ hexOut.textContent = '请输入有效的十进制数字'; return; }
+      hexOut.innerHTML = '十进制 ' + v + ' = 十六进制 <b>' + v.toString(16).toUpperCase() + '</b><br>填等级码(1字节)用 <b>' + padHex(v,2) + '</b>；填金币/血量码(2字节)用 <b>' + padHex(v,4) + '</b>；填经验码(3字节)用 <b>' + padHex(v,6) + '</b>';
+    });
+  }
+  if (hexIn && decOut){
+    hexIn.addEventListener('input', function(){
+      var t = hexIn.value.trim().replace(/^0x/i,'');
+      if (!/^[0-9a-fA-F]+$/.test(t)){ decOut.textContent = '请输入有效的十六进制（如 03E8）'; return; }
+      decOut.textContent = '十六进制 ' + t.toUpperCase() + ' = 十进制 ' + parseInt(t, 16);
+    });
+  }
+
+  // ---- 回到顶部 ----
+  var topBtn = document.getElementById('topBtn');
+  if (topBtn){
+    window.addEventListener('scroll', function(){
+      topBtn.style.display = (window.scrollY > 300) ? 'block' : 'none';
+    });
+    topBtn.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  }
+
+  // ---- 左侧导航：滚动高亮当前章节 ----
+  var secIds = ['s1','s2','s3','s4','s5','s6'];
+  var spyMap = {};
+  secIds.forEach(function(id){
+    var el = document.getElementById(id);
+    var a = document.querySelector('nav a[data-sec="'+id+'"]');
+    if (el && a) spyMap[id] = { el: el, a: a };
+  });
+  function updateSpy(){
+    var now = null;
+    var limit = window.scrollY + 140;
+    secIds.forEach(function(id){
+      var o = spyMap[id];
+      if (!o) return;
+      if (o.el.getBoundingClientRect().top + window.scrollY <= limit) now = id;
+    });
+    secIds.forEach(function(id){
+      var o = spyMap[id];
+      if (!o) return;
+      if (id === now) o.a.classList.add('active');
+      else o.a.classList.remove('active');
+    });
+  }
+  window.addEventListener('scroll', updateSpy);
+  updateSpy();
+})();
+</script>
+</body>
+</html>
